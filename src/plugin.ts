@@ -17,6 +17,10 @@ export class customFilter extends Plugin {
                     private _karaoke: boolean = false;
                     private _vibrato: boolean = false;
                     private _tremolo: boolean = false;
+                    private _chipmunk: boolean = false;
+                    private _3d: boolean = false;
+                    private _television: boolean = false;
+                    private _slowmotion: boolean = false;
 
                     //Private Filter Data
                     private readonly _resetData = {
@@ -43,6 +47,53 @@ export class customFilter extends Plugin {
                         ],
                         timescale: {pitch: 0.5},
                         tremolo: {depth: 0.3, frequency: 14},
+                    };
+
+                    private readonly _chipmunkData = {
+                        op: "filters",
+                        guildId: this.guild,
+                        timescale: {
+                            speed: 1.05,
+                            pitch: 1.35,
+                            rate: 1.25
+                        }
+                    };
+
+                    private readonly _3dData = {
+                        op: "filters",
+                        guildId: this.guild,
+                        rotation: { rotationHz: 0.2 }
+                    };
+
+                    private readonly _televisionData = {
+                        op: "filters",
+                        guildId: this.guild,
+                        equalizer: [
+                            { band: 0, gain: 0 },
+                            { band: 1, gain: 0 },
+                            { band: 2, gain: 0 },
+                            { band: 3, gain: 0 },
+                            { band: 4, gain: 0 },
+                            { band: 5, gain: 0 },
+                            { band: 6, gain: 0 },
+                            { band: 7, gain: 0.65 },
+                            { band: 8, gain: 0.65 },
+                            { band: 9, gain: 0.65 },
+                            { band: 10, gain: 0.65 },
+                            { band: 11, gain: 0.65 },
+                            { band: 12, gain: 0.65 },
+                            { band: 13, gain: 0.65 },
+                        ]
+                    };
+
+                    private readonly _slowmotionData = {
+                        op: "filters",
+                        guildId: this.guild,
+                        timescale: {
+                            speed: 0.5,
+                            pitch: 1.0,
+                            rate: 0.8
+                        }
                     };
 
                     private readonly _bassboostData = {
@@ -166,7 +217,31 @@ export class customFilter extends Plugin {
                             this._karaoke = false;
                             this._vibrato = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._nightcoreData);
+                        } else this._resetnode();
+                    }
+
+                    set chipmunk(status: boolean) {
+                        this._chipmunk = status;
+                        if (status) {
+                            this._vaporwave = false;
+                            this._bassboost = false;
+                            this._soft = false;
+                            this._pop = false;
+                            this._treblebass = false;
+                            this._eightD = false;
+                            this._karaoke = false;
+                            this._vibrato = false;
+                            this._tremolo = false;
+                            this._nightcore = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
+                            this.node.send(this._chipmunkData);
                         } else this._resetnode();
                     }
 
@@ -182,6 +257,10 @@ export class customFilter extends Plugin {
                             this._karaoke = false;
                             this._vibrato = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._vaporwaveData);
                         } else this._resetnode();
                     }
@@ -198,6 +277,10 @@ export class customFilter extends Plugin {
                             this._karaoke = false;
                             this._vibrato = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._bassboostData);
                         } else this._resetnode();
                     }
@@ -214,6 +297,10 @@ export class customFilter extends Plugin {
                             this._karaoke = false;
                             this._vibrato = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._popData);
                         } else this._resetnode();
                     }
@@ -230,6 +317,10 @@ export class customFilter extends Plugin {
                             this._karaoke = false;
                             this._vibrato = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._softData);
                         } else this._resetnode();
                     }
@@ -246,6 +337,10 @@ export class customFilter extends Plugin {
                             this._karaoke = false;
                             this._vibrato = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._treblebassData);
                         } else this._resetnode();
                     }
@@ -262,6 +357,10 @@ export class customFilter extends Plugin {
                             this._karaoke = false;
                             this._vibrato = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._eightDData);
                         } else this._resetnode();
                     }
@@ -278,6 +377,10 @@ export class customFilter extends Plugin {
                             this._eightD = false;
                             this._vibrato = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._karaokeData)
                         } else this._resetnode();
                     }
@@ -294,6 +397,10 @@ export class customFilter extends Plugin {
                             this._eightD = false;
                             this._karaoke = false;
                             this._tremolo = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._vibratoData)
                         } else this._resetnode();
                     }
@@ -310,11 +417,19 @@ export class customFilter extends Plugin {
                             this._eightD = false;
                             this._karaoke = false;
                             this._vibrato = false;
+                            this._chipmunk = false;
+                            this._3d = false;
+                            this._television = false;
+                            this._slowmotion = false;
                             this.node.send(this._tremoloData)
                         } else this._resetnode();
                     }
 
                     //Get Filter Status
+                    get chipmunk() {
+                        return this._chipmunk;
+                    }
+
                     get nightcore() {
                         return this._nightcore;
                     }
@@ -372,6 +487,10 @@ export class customFilter extends Plugin {
                         this._karaoke = false;
                         this._vibrato = false;
                         this._tremolo = false;
+                        this._chipmunk = false;
+                        this._3d = false;
+                        this._television = false;
+                        this._slowmotion = false;
                     }
                 }
         );
